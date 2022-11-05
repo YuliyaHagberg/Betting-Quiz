@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz.css">
+    <title>Betting Quiz</title>
+</head>
+<body>
+    <h1>Betting game</h1>
+    <p>The goal of the game is to get your score as high as possible through betting on the winning 
+        alternative of A or B, only one can win each round.</p>
+
+    <h4>Choose A or B.</h4>
+    <div>
+        <input type="radio" name="bet" value="A" id="a">
+        <label for="a">A</label>
+    </div>
+    <div>
+        <input type="radio" name="bet" value="B" id="b">
+        <label for="B">B</label>
+    </div>
+
+    <p>You can delegate your bet, that is copy the bet of one of the delegates below for this round. 
+        They might have inside information.</p>
+    <h4>Or choose a delegate:</h4>
+
+    <div>
+        <input type="radio" name="bet" value="Delegate 1" id="delegate1">
+        <img src="profile-pic.png" alt="Delegate 1"/>
+        <label for="delegate1">Delegate 1</label>
+    </div>
+    <div>
+        <input type="radio" name="bet" value="Delegate 2" id="delegate2">
+        <img src="profile-pic.png" alt="Delegate 2"/>
+        <label for="delegate2">Delegate 2</label>
+    </div>
+    <div>
+        <input type="radio" name="bet" value="Delegate 3" id="delegate3">
+        <img src="profile-pic.png" alt="Delegate 3"/>
+        <label for="delegate3">Delegate 3</label>
+    </div>
+    <div>
+        <input type="radio" name="bet" value="Delegate 4" id="delegate4">
+        <img src="profile-pic.png" alt="Delegate 4"/>
+        <label for="delegate4">Delegate 4</label>
+    </div>
+    <div>
+        <input type="radio" name="bet" value="Delegate 5" id="delegate5">
+        <img src="profile-pic.png" alt="Delegate 5"/>
+        <label for="delegate5">Delegate 5</label>
+    </div>
+
+    <p><button id="btn">Submit</button></p>
+
+    <p id="output"></p>
+
+    <p>You have submitted your answer <span id="display">0</span> times.</p>
+
+    <script>
+        const btn = document.querySelector('#btn');        
+        const radioButtons = document.querySelectorAll('input[name="bet"]');
+        var count = 0;
+        var disp = document.getElementById("display");
+        btn.addEventListener("click", () => {
+            let selectedBet;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedBet = radioButton.value;
+                    count++;
+                    disp.innerHTML = count;
+                    break;}
+            }
+            output.innerText = selectedBet ? `You selected ${selectedBet}` : `Please select something to submit.`;
+        });
+    </script>
+</body>
+</html>
